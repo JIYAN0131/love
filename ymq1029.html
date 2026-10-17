@@ -1,0 +1,2307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎂 千禧夜 · 生日电脑 · 姚麦琪</title>
+    <style>
+        /* ========== 全局重置 ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #0d0f1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Courier New', Courier, 'VT323', monospace;
+            overflow: hidden;
+            position: relative;
+            touch-action: none;
+        }
+
+        /* ========== 星空背景 ========== */
+        .stars-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background: 
+                radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 90px 40px, #ddd, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 160px 120px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 300px 80px, #ccc, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 500px 200px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 700px 150px, #eee, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 850px 300px, #fff, rgba(0,0,0,0));
+            background-size: 200px 200px;
+            background-repeat: repeat;
+            opacity: 0.8;
+            background-image: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.15) 0px, rgba(0, 0, 0, 0.15) 1px, transparent 1px, transparent 3px),
+                radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 90px 40px, #ddd, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 160px 120px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 300px 80px, #ccc, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 500px 200px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 700px 150px, #eee, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 850px 300px, #fff, rgba(0,0,0,0));
+            background-size: 200px 200px, 200px 200px, 200px 200px, 200px 200px, 200px 200px, 200px 200px, 200px 200px, 200px 200px, 200px 200px;
+            animation: twinkle 8s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
+        /* ========== 画面容器 ========== */
+        .scene-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .scene {
+            display: none;
+            width: 100%;
+            transition: opacity 0.6s ease-in-out;
+            opacity: 0;
+        }
+
+        .scene.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* ========== 第一幕: 书桌电脑 ========== */
+        .room {
+            position: relative;
+            width: 100%;
+            max-width: 880px;
+            margin: 0 auto;
+            background: #211e18;
+            border-radius: 48px 48px 24px 24px;
+            box-shadow: 0 0 0 4px #0a0a0a, 0 0 0 10px #3e362b, 0 20px 40px rgba(0, 0, 0, 0.8), inset 0 0 50px rgba(0, 0, 0, 0.7);
+            padding: 40px 24px 24px 24px;
+            background: radial-gradient(circle at 20% 20%, #2f2a24 0%, #1c1814 80%);
+            border: 1px solid #b89b7b;
+            transition: all 0.2s;
+        }
+
+        .room::before {
+            content: "";
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            width: 90px;
+            height: 110px;
+            background: #b3d0ff;
+            opacity: 0.18;
+            border-radius: 8px;
+            box-shadow: 0 0 40px #b3d0ff, 0 0 80px #a0b8e0;
+            border: 2px solid #5b6b7c;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .room::after {
+            content: "";
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            width: 90px;
+            height: 110px;
+            background: 
+                linear-gradient(90deg, transparent 45%, #4b5a6b 45%, #4b5a6b 55%, transparent 55%),
+                linear-gradient(0deg, transparent 45%, #4b5a6b 45%, #4b5a6b 55%, transparent 55%);
+            opacity: 0.3;
+            border-radius: 8px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .desk {
+            position: relative;
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 12px;
+        }
+
+        .computer {
+            position: relative;
+            width: 100%;
+            max-width: 520px;
+            background: #cdc5b4;
+            border-radius: 28px 28px 12px 12px;
+            padding: 28px 20px 20px 20px;
+            box-shadow: 0 12px 0 #6b5e4c, 0 20px 20px rgba(0, 0, 0, 0.6), inset 0 -4px 0 #9c8f7a, inset 0 4px 8px #f0e8d8;
+            border: 2px solid #ab9c83;
+            transform: perspective(1000px) rotateX(1deg);
+            transition: transform 0.1s ease;
+        }
+
+        .screen {
+            background: #1a1f1c;
+            border-radius: 18px 18px 10px 10px;
+            padding: 22px 18px;
+            box-shadow: inset 0 0 0 5px #65604e, inset 0 0 30px #000000, 0 0 0 4px #9f947f, 0 0 20px #00ffaa33;
+            border: 1px solid #e0d5c0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .screen::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.03) 0px, rgba(255, 255, 255, 0.03) 2px, transparent 2px, transparent 5px);
+            pointer-events: none;
+            z-index: 10;
+            border-radius: 14px;
+        }
+
+        .screen-content {
+            position: relative;
+            z-index: 5;
+            color: #b5ffcf;
+            text-shadow: 0 0 6px #00ffaa, 0 0 20px #00aa66;
+            font-family: 'Courier New', 'VT323', monospace;
+            text-align: center;
+            letter-spacing: 2px;
+            padding: 8px 0;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: screenGlow 4s infinite alternate;
+        }
+
+        @keyframes screenGlow {
+            0% { text-shadow: 0 0 4px #5aff9e, 0 0 16px #00b36b; }
+            100% { text-shadow: 0 0 10px #a0ffc0, 0 0 28px #00ff8c; }
+        }
+
+        .pixel-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            line-height: 1.3;
+            margin: 8px 0;
+            text-transform: uppercase;
+            filter: drop-shadow(0 0 2px #00cc77);
+        }
+
+        .small-pixel {
+            font-size: 1rem;
+            letter-spacing: 2px;
+            opacity: 0.9;
+            background: #0f281e;
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px dashed #4f9b7a;
+            margin: 8px 0;
+        }
+
+        .blink {
+            animation: blink 1.2s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .computer-base {
+            width: 240px;
+            height: 22px;
+            background: #9e8e78;
+            border-radius: 12px 12px 6px 6px;
+            margin: 8px auto 0 auto;
+            box-shadow: inset 0 -4px 0 #5e5141, 0 6px 0 #3e352a;
+            border-bottom: 2px solid #cbbda9;
+            position: relative;
+        }
+
+        .keyboard {
+            width: 100%;
+            max-width: 420px;
+            height: 64px;
+            background: #b3a387;
+            margin: 18px auto 12px;
+            border-radius: 12px 12px 8px 8px;
+            box-shadow: 0 6px 0 #615644, 0 10px 16px rgba(0, 0, 0, 0.5), inset 0 2px 6px #f3eadb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            border: 1px solid #d6c8b2;
+        }
+
+        .key {
+            background: #ddd2be;
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            box-shadow: 0 3px 0 #6b5e4c, inset 0 1px 4px #fff3e0;
+            border: 1px solid #b8a68b;
+        }
+
+        .key.wide {
+            width: 60px;
+        }
+
+        .mouse {
+            width: 42px;
+            height: 42px;
+            background: #b3a387;
+            border-radius: 30% 30% 40% 40% / 50% 50% 30% 30%;
+            box-shadow: 0 4px 0 #6b5e4c, inset 0 2px 8px #eedcc8;
+            margin-left: 20px;
+            border: 1px solid #cbb99e;
+            position: relative;
+            transform: rotate(2deg);
+        }
+
+        .mouse::after {
+            content: "";
+            position: absolute;
+            top: 12px;
+            left: 18px;
+            width: 6px;
+            height: 8px;
+            background: #8e7b62;
+            border-radius: 3px;
+            box-shadow: inset 0 1px 2px #30281d;
+        }
+
+        .peripherals {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 6px;
+        }
+
+        .bday-decoration {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .bday-decoration span {
+            font-size: 2.2rem;
+            filter: drop-shadow(0 4px 4px black);
+            opacity: 0.75;
+            transform: rotate(-5deg);
+        }
+
+        .bday-decoration span:last-child {
+            transform: rotate(8deg);
+        }
+
+        .greeting {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fbffb9;
+            text-shadow: 3px 3px 0 #2a4a3a, 0 0 12px #b3ffa7;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .name-highlight {
+            font-size: 2rem;
+            background: #152b22;
+            display: inline-block;
+            padding: 0 10px;
+            border-radius: 8px;
+            border: 2px solid #55c89b;
+            margin: 6px 0;
+            cursor: pointer;
+        }
+
+        .mug {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 60px;
+            height: 58px;
+            background: #b59b7a;
+            border-radius: 8px 8px 30px 30px;
+            box-shadow: inset -6px -6px 0 #836e53, 0 8px 0 #4d3f2f, 0 12px 16px black;
+            transform: rotate(-8deg);
+            border: 1px solid #dfc9ad;
+            z-index: 8;
+        }
+
+        .mug::after {
+            content: "☕";
+            position: absolute;
+            top: 6px;
+            left: 18px;
+            font-size: 24px;
+            filter: drop-shadow(0 2px 2px black);
+            opacity: 0.8;
+        }
+
+        .mug-handle {
+            position: absolute;
+            right: -16px;
+            top: 16px;
+            width: 24px;
+            height: 32px;
+            border: 6px solid #b59b7a;
+            border-left: none;
+            border-radius: 0 20px 20px 0;
+            box-shadow: 4px 4px 0 #4d3f2f;
+        }
+
+        .sticky-note {
+            position: absolute;
+            bottom: 100px;
+            right: 28px;
+            width: 100px;
+            height: 100px;
+            background: #f7e9a0;
+            transform: rotate(6deg);
+            box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.5);
+            z-index: 7;
+            padding: 8px;
+            font-family: 'Comic Sans MS', 'Courier New', cursive;
+            font-size: 14px;
+            color: #3d2e1c;
+            border: 1px solid #c2aa7a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 0 0 20px 0;
+            opacity: 0.9;
+        }
+
+        .screen-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 8px;
+            width: 100%;
+        }
+
+        .continue-btn {
+            color: #7dcf9b;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            padding: 6px 16px;
+            border: 1px dashed #55c89b;
+            border-radius: 6px;
+            background: #0f281e;
+            display: inline-block;
+            pointer-events: auto;
+            text-shadow: 0 0 6px #00ffaa;
+        }
+
+        .continue-btn:hover {
+            background: #1d4030;
+            box-shadow: 0 0 12px #00ffaa;
+            border-color: #a0ffc0;
+            transform: scale(1.05);
+        }
+
+        /* ========== 第二幕: 星空相框 ========== */
+        .scene-frame {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .frame-container {
+            position: relative;
+            width: 100%;
+            max-width: 720px;
+            background: #1f1a14;
+            border-radius: 16px;
+            padding: 12px;
+            box-shadow: 
+                0 0 0 6px #3e2e1c,  
+                0 0 0 10px #5e4b32, 
+                0 0 0 12px #2b1f12, 
+                0 20px 40px rgba(0, 0, 0, 0.9),
+                inset 0 0 40px rgba(0, 0, 0, 0.8);
+            border: 2px solid #a58b64;
+            background-image: 
+                linear-gradient(45deg, rgba(80, 60, 40, 0.3) 0%, transparent 30%),
+                repeating-linear-gradient(90deg, #2a2118 0px, #2a2118 2px, #3a2e22 2px, #3a2e22 6px);
+            background-blend-mode: overlay;
+        }
+
+        .frame-inner {
+            position: relative;
+            background: #0e0e1a;
+            border-radius: 6px;
+            padding: 24px 16px;
+            box-shadow: 
+                inset 0 0 30px #000,
+                0 0 20px #a58b6440;
+            border: 2px solid #8b734e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .frame-title {
+            display: inline-block;
+            background: #111;
+            color: #f0e8d8;
+            font-family: 'Courier New', 'VT323', monospace;
+            font-size: 1.6rem;
+            font-weight: bold;
+            padding: 8px 20px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border: 2px solid #a58b64;
+            box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.6), 0 0 15px #c9a87c40;
+            margin-bottom: 16px;
+            text-align: center;
+            text-shadow: 2px 2px 0 #000, 0 0 8px #ffffff60;
+            transform: rotate(-0.5deg);
+        }
+
+        .photo-layout {
+            position: relative;
+            width: 430px;  
+            height: 350px; 
+            margin: 0 auto;
+            left: -10px;
+        }
+
+        .photo-box {
+            position: absolute;
+            background: #f8f6f0;
+            border: 2px solid #222;
+            box-shadow: 2px 2px 0 #111, 0 0 8px #fff3d080;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #3d2e1c;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+
+        .photo-box::after {
+            content: "📷";
+            opacity: 0.2;
+            font-size: 1.2rem;
+            filter: grayscale(1);
+        }
+
+        @media (max-width: 750px) {
+            .frame-container {
+                padding: 8px;
+                transform: scale(0.85);
+                transform-origin: top center;
+            }
+            .frame-title {
+                font-size: 1.2rem;
+                padding: 6px 12px;
+            }
+        }
+        @media (max-width: 600px) {
+            .frame-container {
+                transform: scale(0.65);
+                transform-origin: top center;
+            }
+        }
+
+        .back-btn {
+            position: absolute;
+            bottom: -36px;
+            left: 10px;
+            background: #2a2118;
+            color: #c9b28c;
+            border: 2px solid #8b734e;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            z-index: 20;
+            transition: 0.2s;
+            text-decoration: none;
+            font-family: 'Courier New', monospace;
+            opacity: 0.8;
+        }
+
+        .back-btn:hover {
+            opacity: 1;
+            background: #3e2e1c;
+        }
+
+        .next-btn {
+            position: absolute;
+            bottom: -36px;
+            right: 10px;
+            background: #2a2118;
+            color: #f0e8d8;
+            border: 2px solid #a58b64;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            z-index: 20;
+            transition: 0.2s;
+            text-decoration: none;
+            font-family: 'Courier New', monospace;
+            opacity: 0.9;
+            box-shadow: 0 0 10px #c9a87c40;
+        }
+
+        .next-btn:hover {
+            opacity: 1;
+            background: #4a3b2a;
+            box-shadow: 0 0 15px #e6c89c;
+            transform: translateY(-2px);
+        }
+
+        /* ========== 第三幕: 千禧扭蛋机 ========== */
+        .scene-gacha {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            padding: 20px;
+            width: 100%;
+            position: relative;
+        }
+
+        .gacha-machine {
+            position: relative;
+            width: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.8));
+            margin-bottom: 60px; 
+        }
+
+        .gacha-dome {
+            position: relative;
+            width: 260px;
+            height: 320px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.05) 50%, rgba(200,220,255,0.2) 100%);
+            border-radius: 10px 10px 6px 6px;
+            border: 3px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 
+                inset 0 0 20px rgba(255,255,255,0.3),
+                inset 0 0 50px rgba(150, 200, 255, 0.2),
+                0 0 0 3px #b0b0b0,
+                0 10px 20px rgba(0,0,0,0.5);
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .gacha-dome::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -3px;
+            width: calc(100% + 6px);
+            height: 16px;
+            background: linear-gradient(to bottom, #ff4d4d, #cc0000);
+            border-bottom: 2px solid #800000;
+            border-radius: 8px 8px 0 0;
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.5), 0 2px 4px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+
+        .gacha-dome::before {
+            content: "";
+            position: absolute;
+            top: 30px;
+            left: 10px;
+            width: 30px;
+            height: 220px;
+            background: linear-gradient(to right, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.1) 100%);
+            border-radius: 4px;
+            transform: skewX(-2deg);
+            filter: blur(1px);
+            z-index: 8;
+            pointer-events: none;
+        }
+
+        .gacha-balls-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-end;
+            justify-content: center;
+            z-index: 1;
+            gap: 2px;
+        }
+
+        .gacha-ball {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 
+                inset -4px -4px 8px rgba(0,0,0,0.3),
+                inset 4px 4px 8px rgba(255,255,255,0.8),
+                0 3px 5px rgba(0,0,0,0.4);
+            background: linear-gradient(135deg, var(--c1) 50%, var(--c2) 50%);
+            transform: rotate(var(--rot, 0deg)) translateY(var(--y, 0px));
+            animation: floatBall 4s infinite alternate ease-in-out;
+            animation-delay: var(--delay, 0s);
+        }
+
+        .gacha-ball::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: rgba(0,0,0,0.2);
+            box-shadow: 0 1px 1px rgba(255,255,255,0.5);
+            transform: translateY(-1px);
+        }
+        .gacha-ball::after {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 8px;
+            width: 12px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            transform: rotate(-25deg);
+            filter: blur(1px);
+        }
+
+        @keyframes floatBall {
+            0% { transform: rotate(var(--rot)) translateY(0); }
+            100% { transform: rotate(var(--rot)) translateY(-3px); }
+        }
+
+        .gacha-base-mid {
+            width: 280px;
+            height: 50px;
+            background: linear-gradient(to bottom, #e63946, #b3001b);
+            border-radius: 4px;
+            border: 2px solid #800000;
+            box-shadow: 
+                0 4px 0 #660000,
+                0 8px 10px rgba(0,0,0,0.5),
+                inset 0 4px 6px rgba(255,255,255,0.3);
+            margin-top: -6px;
+            z-index: 3;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .coin-btn {
+            width: 44px;
+            height: 20px;
+            background: radial-gradient(circle at 30% 30%, #f0f0f0, #b0b0b0, #777);
+            border-radius: 6px;
+            border: 2px solid #555;
+            box-shadow: 
+                0 4px 0 #333,
+                0 6px 6px rgba(0,0,0,0.5),
+                inset 0 2px 4px rgba(255,255,255,0.8);
+            cursor: pointer;
+            transition: all 0.1s ease;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+        }
+
+        .coin-btn::after {
+            content: "";
+            width: 20px;
+            height: 4px;
+            background: #222;
+            border-radius: 2px;
+            box-shadow: inset 0 1px 2px #000;
+            pointer-events: none;
+        }
+
+        .coin-btn:active {
+            transform: translateY(4px);
+            box-shadow: 
+                0 0px 0 #333,
+                0 2px 4px rgba(0,0,0,0.5),
+                inset 0 2px 6px rgba(0,0,0,0.5);
+        }
+
+        .gacha-base-bottom {
+            width: 280px;
+            height: 130px;
+            background: linear-gradient(to bottom, #e63946, #cc0000);
+            border-radius: 0 0 8px 8px;
+            border: 2px solid #800000;
+            border-top: none;
+            box-shadow: 
+                0 10px 0 #660000,
+                0 15px 20px rgba(0,0,0,0.6),
+                inset 0 -10px 20px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 15px;
+        }
+
+        .exit-hole {
+            width: 90px;
+            height: 50px;
+            background: #111;
+            border-radius: 4px;
+            border: 2px solid #555;
+            box-shadow: 
+                inset 0 8px 15px #000,
+                inset 0 -2px 5px #444;
+            position: relative;
+            overflow: visible;
+            z-index: 5;
+        }
+
+        .exit-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(200,200,200,0.9), rgba(150,150,150,0.8));
+            border-bottom: 2px solid #888;
+            transform-origin: top;
+            transition: transform 0.3s ease-in-out;
+            z-index: 6;
+        }
+
+        .exit-flap.open {
+            transform: rotateX(80deg);
+        }
+
+        .gacha-legs {
+            position: absolute;
+            bottom: -90px;
+            width: 100%;
+            height: 90px;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 1;
+        }
+
+        .leg {
+            width: 16px;
+            height: 100%;
+            background: linear-gradient(to right, #999, #e0e0e0, #999);
+            border-radius: 8px;
+            border: 1px solid #666;
+            position: relative;
+        }
+
+        .leg::after {
+            content: "";
+            position: absolute;
+            top: 40px;
+            width: 200px;
+            height: 12px;
+            background: linear-gradient(to bottom, #e0e0e0, #999);
+            border: 1px solid #666;
+            border-radius: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+        }
+
+        .to-cake-btn {
+            position: absolute;
+            bottom: 20px;
+            background: #2a2118;
+            color: #f0e8d8;
+            border: 2px solid #a58b64;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            z-index: 20;
+            transition: 0.2s;
+            text-decoration: none;
+            font-family: 'Courier New', monospace;
+            opacity: 0.9;
+            box-shadow: 0 0 10px #c9a87c40;
+        }
+
+        .to-cake-btn:hover {
+            opacity: 1;
+            background: #4a3b2a;
+            box-shadow: 0 0 15px #e6c89c;
+            transform: translateY(-2px);
+        }
+
+        /* 弹出层（扭蛋和纸条） */
+        .popup-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-gacha {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            box-shadow: 
+                inset -6px -6px 12px rgba(0,0,0,0.3),
+                inset 6px 6px 12px rgba(255,255,255,0.8),
+                0 8px 20px rgba(0,0,0,0.6);
+            background: linear-gradient(135deg, var(--c1) 50%, var(--c2) 50%);
+            pointer-events: auto;
+            cursor: pointer;
+            transition: transform 0.2s, opacity 0.3s;
+            z-index: 10000;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .popup-gacha::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: rgba(0,0,0,0.2);
+            box-shadow: 0 1px 1px rgba(255,255,255,0.6);
+            transform: translateY(-1px);
+        }
+
+        .popup-gacha::after {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 16px;
+            width: 24px;
+            height: 14px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            transform: rotate(-25deg);
+            filter: blur(1.5px);
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0) translateY(200px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+
+        .popup-gacha.opening {
+            animation: openGacha 0.4s forwards;
+            pointer-events: none;
+        }
+
+        @keyframes openGacha {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.8; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
+        .popup-note {
+            position: absolute;
+            width: 380px;
+            min-height: 220px;
+            background: #f7e9a0;
+            border: 4px solid #d4af37;
+            box-shadow: 
+                0 10px 30px rgba(0,0,0,0.8),
+                inset 0 0 20px rgba(200, 150, 50, 0.2);
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            font-family: 'Courier New', 'VT323', monospace;
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #4a3b2a;
+            line-height: 1.8;
+            text-align: center;
+            z-index: 10001;
+            background-image: 
+                linear-gradient(45deg, rgba(200, 150, 50, 0.1) 25%, transparent 25%, transparent 75%, rgba(200, 150, 50, 0.1) 75%),
+                linear-gradient(45deg, rgba(200, 150, 50, 0.1) 25%, transparent 25%, transparent 75%, rgba(200, 150, 50, 0.1) 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            transform: scale(0);
+            animation: noteIn 0.5s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            pointer-events: auto;
+            cursor: pointer;
+        }
+
+        .popup-note p {
+            position: relative;
+            z-index: 2;
+            text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+            font-family: 'Courier New', 'VT323', monospace;
+            -webkit-font-smoothing: none;
+        }
+
+        .popup-note::before {
+            content: "✦";
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            color: #b8860b;
+            font-size: 1.2rem;
+        }
+        .popup-note::after {
+            content: "✦";
+            position: absolute;
+            bottom: 5px;
+            right: 10px;
+            color: #b8860b;
+            font-size: 1.2rem;
+        }
+
+        @keyframes noteIn {
+            0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        .popup-note .close-hint {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            font-size: 0.7rem;
+            color: #8a6d3b;
+            opacity: 0.6;
+        }
+
+        /* ========== 第四幕: 双层蛋糕与立体数字蜡烛 ========== */
+        .scene-cake {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            padding: 20px;
+            width: 100%;
+            position: relative;
+        }
+
+        .cake-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            height: 550px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding-bottom: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .top-dialog {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            border: 4px solid #111;
+            border-radius: 20px;
+            padding: 15px 30px;
+            font-family: 'Courier New', 'VT323', monospace;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #111;
+            box-shadow: 6px 6px 0 #ff7675, 0 10px 20px rgba(0,0,0,0.5);
+            z-index: 30;
+            white-space: nowrap;
+            animation: floatUpDown 2s infinite alternate ease-in-out;
+        }
+
+        .top-dialog::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 15px 15px 0;
+            border-style: solid;
+            border-color: #111 transparent transparent transparent;
+        }
+        .top-dialog::before {
+            content: "";
+            position: absolute;
+            bottom: -9px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 12px 12px 0;
+            border-style: solid;
+            border-color: #fff transparent transparent transparent;
+            z-index: 1;
+        }
+
+        @keyframes floatUpDown {
+            0% { transform: translateX(-50%) translateY(0); }
+            100% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        .swipe-hint {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            color: #f0e8d8;
+            font-size: 1.1rem;
+            font-family: 'Courier New', 'VT323', monospace;
+            z-index: 30;
+            animation: fadeInOut 2s infinite;
+            pointer-events: none;
+        }
+
+        .swipe-hint .arrow {
+            font-size: 2rem;
+            color: #ff7675;
+            text-shadow: 0 0 10px #ff7675;
+            animation: bounceUp 1s infinite alternate;
+        }
+
+        @keyframes bounceUp {
+            0% { transform: translateY(0); opacity: 0.7; }
+            100% { transform: translateY(-15px); opacity: 1; }
+        }
+        
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 0.4; }
+        }
+
+        .cake {
+            position: relative;
+            width: 360px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            z-index: 2;
+            filter: drop-shadow(0 0 30px rgba(255, 150, 50, 0.2));
+            cursor: pointer; 
+        }
+
+        .cake-plate {
+            width: 420px;
+            height: 45px;
+            background: linear-gradient(to bottom, #e0e0e0, #b0b0b0);
+            border-radius: 50%;
+            box-shadow: 
+                0 10px 20px rgba(0,0,0,0.8),
+                inset 0 -5px 10px rgba(0,0,0,0.2),
+                inset 0 5px 10px rgba(255,255,255,0.8);
+            z-index: 3;
+            position: relative;
+        }
+
+        .cake-layer-bottom {
+            position: absolute;
+            bottom: 22px;
+            width: 320px;
+            height: 110px;
+            background: #f4d03f;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 
+                inset 0 -15px 30px rgba(200, 100, 50, 0.3),
+                0 -5px 15px rgba(0,0,0,0.3);
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .cake-layer-bottom::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 35px;
+            background: #ff9999;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 5px 10px rgba(255, 100, 100, 0.4);
+            background-image: radial-gradient(circle at 20px 35px, #ff9999 18px, transparent 19px),
+                              radial-gradient(circle at 80px 35px, #ff9999 22px, transparent 23px),
+                              radial-gradient(circle at 140px 35px, #ff9999 20px, transparent 21px),
+                              radial-gradient(circle at 200px 35px, #ff9999 24px, transparent 25px),
+                              radial-gradient(circle at 260px 35px, #ff9999 18px, transparent 19px);
+            background-size: 320px 100%;
+            background-repeat: repeat-x;
+        }
+
+        .cake-layer-top {
+            position: absolute;
+            bottom: 130px;
+            width: 240px;
+            height: 90px;
+            background: #fff5cc;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 
+                inset 0 -10px 20px rgba(200, 150, 100, 0.2),
+                0 -5px 15px rgba(0,0,0,0.2);
+            z-index: 3;
+            overflow: hidden;
+        }
+
+        .cake-layer-top::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background: #ffb3b3;
+            border-radius: 0 0 12px 12px;
+            background-image: radial-gradient(circle at 20px 30px, #ffb3b3 15px, transparent 16px),
+                              radial-gradient(circle at 70px 30px, #ffb3b3 18px, transparent 19px),
+                              radial-gradient(circle at 120px 30px, #ffb3b3 17px, transparent 18px),
+                              radial-gradient(circle at 170px 30px, #ffb3b3 19px, transparent 20px),
+                              radial-gradient(circle at 220px 30px, #ffb3b3 15px, transparent 16px);
+            background-size: 240px 100%;
+            background-repeat: repeat-x;
+        }
+
+        .cake-decoration {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: radial-gradient(circle at 6px 6px, #ff4d4d, #b30000);
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+            z-index: 10;
+        }
+
+        .deco-1 { bottom: 150px; left: 50px; }
+        .deco-2 { bottom: 150px; right: 50px; }
+        .deco-3 { bottom: 195px; left: 110px; }
+        .deco-4 { bottom: 195px; right: 110px; }
+        .deco-5 { bottom: 65px; left: 30px; }
+        .deco-6 { bottom: 65px; right: 30px; }
+
+        .candles-area {
+            position: absolute;
+            bottom: 235px; 
+            width: 200px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 25px;
+            z-index: 15;
+        }
+
+        .candle-number-wrapper {
+            position: relative;
+            width: 60px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .candle-base {
+            position: absolute;
+            bottom: 0px;
+            width: 16px;
+            height: 12px;
+            background: #fff;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            z-index: 2;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .golden-candle-text {
+            font-family: 'Arial Black', Impact, 'Comic Sans MS', sans-serif;
+            font-size: 85px;
+            font-weight: 900;
+            line-height: 1;
+            color: #facc15;
+            text-shadow: 
+                -1px -1px 0 #b8860b,
+                 1px -1px 0 #b8860b,
+                -1px  1px 0 #b8860b,
+                 1px  1px 0 #b8860b,
+                 0px  3px 0 #b8860b,
+                 0px  5px 0 #8a6d3b,
+                 0px  6px 0 #664d26,
+                 0px  8px 10px rgba(0,0,0,0.6);
+            z-index: 4;
+            transform: translateY(8px);
+        }
+
+        .candle-wick {
+            position: absolute;
+            bottom: 85px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 14px;
+            background: #333;
+            border-radius: 2px;
+            z-index: 3;
+        }
+
+        .flame {
+            position: absolute;
+            bottom: 93px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 18px;
+            height: 32px;
+            background: radial-gradient(ellipse at bottom, #fff 10%, #ffd700 40%, #ff8c00 80%, transparent 100%);
+            border-radius: 50% 50% 20% 20%;
+            animation: flicker 0.15s infinite alternate ease-in-out;
+            filter: drop-shadow(0 0 12px #ffaa00);
+            z-index: 10;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .flame::after {
+            content: "";
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 16px;
+            background: #fff;
+            border-radius: 50% 50% 20% 20%;
+            opacity: 0.9;
+        }
+
+        .flame.extinguished {
+            opacity: 0;
+            transform: translateX(-50%) scale(0);
+            animation: none;
+        }
+
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scale(1) rotate(-2deg); opacity: 0.9; }
+            100% { transform: translateX(-50%) scale(1.05, 1.1) rotate(2deg); opacity: 1; }
+        }
+
+        /* ========== 全屏彩带 ========== */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9998;
+            overflow: hidden;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 12px;
+            height: 24px;
+            background: var(--color);
+            opacity: 0;
+            top: 60%; 
+            left: 50%;
+            transform-origin: center;
+            animation: burst 3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            border-radius: 2px;
+        }
+
+        .confetti-piece.circle {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+        }
+
+        @keyframes burst {
+            0% {
+                transform: translate(-50%, -50%) rotate(0) scale(0);
+                opacity: 1;
+            }
+            10% {
+                transform: translate(calc(-50% + var(--x) * 0.2), calc(-50% + var(--y) * 0.2)) rotate(var(--r)) scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(calc(-50% + var(--x) * 1.8), calc(-50% + var(--y) * 1.8 + 400px)) rotate(calc(var(--r) * 3)) scale(0.6);
+                opacity: 0;
+            }
+        }
+
+        /* 吃蛋糕提示弹窗 */
+        .eat-cake-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: #fff;
+            border: 4px solid #111;
+            border-radius: 20px;
+            padding: 20px 40px;
+            font-family: 'Courier New', 'VT323', monospace;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #111;
+            box-shadow: 6px 6px 0 #ff7675, 0 10px 30px rgba(0,0,0,0.8);
+            z-index: 10005;
+            cursor: pointer;
+            animation: popInCenter 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            display: none;
+        }
+
+        .eat-cake-popup::after {
+            content: "（点我吃蛋糕）";
+            display: block;
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        @keyframes popInCenter {
+            0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+
+        /* ========== 第五幕: 千禧年QQ聊天框 ========== */
+        .scene-chat {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 80vh;
+        }
+
+        .qq-window {
+            width: 100%;
+            max-width: 600px;
+            height: 100%;
+            max-height: 600px;
+            background: #e6e8eb;
+            border: 2px solid #7a8b9e;
+            border-radius: 4px;
+            box-shadow: 
+                inset -1px -1px 0 #fff,
+                inset 1px 1px 0 #9eb0c2,
+                5px 5px 15px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .qq-titlebar {
+            height: 32px;
+            background: linear-gradient(to bottom, #4a6b8c, #36536e);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+            color: #fff;
+            font-family: 'Microsoft YaHei', 'SimHei', sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            border-bottom: 1px solid #2a3e53;
+        }
+
+        .qq-titlebar-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .qq-icon {
+            width: 18px;
+            height: 18px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #36536e;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .qq-titlebar-right {
+            display: flex;
+            gap: 5px;
+        }
+
+        .qq-win-btn {
+            width: 20px;
+            height: 18px;
+            background: #5c7d9c;
+            border: 1px solid #2a3e53;
+            border-radius: 2px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 10px;
+            cursor: default;
+        }
+
+        /* 红色的关闭按钮交互样式 */
+        .qq-win-btn.close-btn {
+            background: #e74c3c;
+            color: #fff;
+            cursor: pointer;
+            border-color: #c0392b;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .qq-win-btn.close-btn:hover {
+            background: #c0392b;
+        }
+
+        .qq-toolbar {
+            height: 36px;
+            background: #f0f2f5;
+            border-bottom: 1px solid #c3cfd9;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            gap: 10px;
+            font-size: 12px;
+            color: #555;
+        }
+
+        .qq-tool-icon {
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 1px solid #b0bcc7;
+            border-radius: 2px;
+        }
+
+        .qq-chat-area {
+            flex: 1;
+            background: #fff;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            scroll-behavior: smooth;
+        }
+
+        .qq-msg {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            animation: msgSlideIn 0.3s ease-out forwards;
+        }
+
+        @keyframes msgSlideIn {
+            0% { transform: translateX(-20px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        .qq-avatar {
+            width: 40px;
+            height: 40px;
+            background: #4a6b8c;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 18px;
+            font-family: 'Microsoft YaHei', 'SimHei', sans-serif;
+            font-weight: bold;
+            flex-shrink: 0;
+            border: 2px solid #36536e;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .qq-bubble-container {
+            display: flex;
+            flex-direction: column;
+            max-width: 80%;
+        }
+
+        .qq-sender-name {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 4px;
+            margin-left: 5px;
+        }
+
+        .qq-bubble {
+            background: #e6f3ff;
+            border: 1px solid #b5d1eb;
+            padding: 10px 15px;
+            border-radius: 4px 15px 15px 15px;
+            color: #333;
+            font-family: 'Microsoft YaHei', 'SimHei', sans-serif;
+            font-size: 15px;
+            line-height: 1.5;
+            position: relative;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .qq-bubble::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -8px;
+            border-width: 0 10px 10px 0;
+            border-style: solid;
+            border-color: transparent #b5d1eb transparent transparent;
+        }
+        .qq-bubble::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -6px;
+            border-width: 0 8px 8px 0;
+            border-style: solid;
+            border-color: transparent #e6f3ff transparent transparent;
+        }
+
+        .qq-input-area {
+            height: 100px;
+            border-top: 1px solid #c3cfd9;
+            background: #f9fbfd;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer; /* 鼠标指针提示 */
+        }
+
+        .qq-input-toolbar {
+            height: 30px;
+            border-bottom: 1px solid #e1e8ee;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            gap: 5px;
+        }
+
+        .qq-input-tool-icon {
+            width: 16px;
+            height: 16px;
+            background: #ccc;
+            border-radius: 2px;
+        }
+
+        .qq-textarea {
+            flex: 1;
+            padding: 10px;
+            color: #999;
+            font-size: 14px;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+
+        .qq-send-btn {
+            height: 28px;
+            background: linear-gradient(to bottom, #f0f7ff, #d6e8fa);
+            border: 1px solid #b5d1eb;
+            border-radius: 3px;
+            padding: 0 20px;
+            color: #4a6b8c;
+            font-size: 13px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-self: flex-end;
+            margin: 0 10px 10px 0;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 星空背景 -->
+    <div class="stars-bg"></div>
+
+    <!-- 画面容器 -->
+    <div class="scene-wrapper">
+        <!-- ========== 第一幕: 书桌电脑 ========== -->
+        <div id="scene1" class="scene active">
+            <div class="room">
+                <div class="bday-decoration">
+                    <span>🎈</span>
+                    <span>🎂</span>
+                    <span>✨</span>
+                </div>
+
+                <div class="lamp-glow"></div>
+
+                <div class="desk">
+                    <div class="computer">
+                        <div class="screen">
+                            <div class="screen-content">
+                                <div class="pixel-text">🎉 生日快乐姚麦琪 🎉</div>
+                                <div class="greeting">HAPPY BIRTHDAY</div>
+                                <div class="name-highlight" id="friendName">👾 姚 麦 琪 👾</div>
+                                <div class="small-pixel">★ 2026.10.29 ★</div>
+                                <div style="font-size:1rem; margin-top:10px; color:#a7f0c1;">
+                                    &gt; Hello to you, forever. &lt;
+                                </div>
+                                <div class="screen-buttons">
+                                    <span class="continue-btn" id="continueBtn">[ 继续 ]</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="computer-base"></div>
+                    </div>
+
+                    <div class="peripherals">
+                        <div class="keyboard">
+                            <div class="key"></div><div class="key"></div><div class="key wide"></div>
+                            <div class="key"></div><div class="key"></div><div class="key wide"></div>
+                            <div class="key"></div><div class="key"></div>
+                        </div>
+                        <div class="mouse"></div>
+                    </div>
+                </div>
+
+                <div class="mug">
+                    <div class="mug-handle"></div>
+                </div>
+                <div class="sticky-note">谭叔叔出品</div>
+
+                <div style="position: absolute; bottom: 10px; right: 20px; font-size: 20px; opacity: 0.5; color: #b7a78a; z-index: 7;">💾</div>
+            </div>
+        </div>
+
+        <!-- ========== 第二幕: 星空相框 ========== -->
+        <div id="scene2" class="scene">
+            <div class="scene-frame">
+                <div class="frame-container">
+                    <div class="frame-inner">
+                        <div class="frame-title">MY FAVORITE ALBUMS</div>
+
+                        <div class="photo-layout">
+                            <div class="photo-box" style="left: 85px; top: 0px; width: 55px; height: 55px;"></div>
+                            <div class="photo-box" style="left: 150px; top: 0px; width: 55px; height: 55px;"></div>
+                            
+                            <div class="photo-box" style="left: 10px; top: 65px; width: 55px; height: 55px;"></div>
+                            <div class="photo-box" style="left: 85px; top: 65px; width: 120px; height: 115px;"></div>
+                            
+                            <div class="photo-box" style="left: 215px; top: 65px; width: 55px; height: 55px;"></div>
+                            <div class="photo-box" style="left: 280px; top: 0px; width: 115px; height: 125px;"></div>
+                            <div class="photo-box" style="left: 405px; top: 35px; width: 55px; height: 55px;"></div>
+
+                            <div class="photo-box" style="left: 10px; top: 130px; width: 55px; height: 55px;"></div>
+                            
+                            <div class="photo-box" style="left: 215px; top: 130px; width: 55px; height: 55px;"></div>
+                            <div class="photo-box" style="left: 280px; top: 135px; width: 115px; height: 115px;"></div>
+                            <div class="photo-box" style="left: 405px; top: 130px; width: 55px; height: 55px;"></div>
+
+                            <div class="photo-box" style="left: 85px; top: 190px; width: 55px; height: 55px;"></div>
+                            <div class="photo-box" style="left: 150px; top: 190px; width: 120px; height: 115px;"></div>
+                            
+                            <div class="photo-box" style="left: 280px; top: 260px; width: 55px; height: 55px;"></div>
+
+                            <div class="photo-box" style="left: 180px; top: 315px; width: 55px; height: 55px;"></div>
+                        </div>
+                    </div>
+
+                    <div class="back-btn" id="backBtn">← 返回</div>
+                    <div class="next-btn" id="nextToGacha">去扭蛋机 →</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== 第三幕: 千禧扭蛋机 ========== -->
+        <div id="scene3" class="scene">
+            <div class="scene-gacha">
+                <div class="gacha-machine">
+                    <div class="gacha-legs">
+                        <div class="leg"></div>
+                        <div class="leg"></div>
+                    </div>
+
+                    <div class="gacha-dome">
+                        <div class="gacha-balls-container">
+                            <div class="gacha-ball" style="--c1:#ff9ff3; --c2:#f368e0; --rot:15deg; --delay:0.1s;"></div>
+                            <div class="gacha-ball" style="--c1:#48dbfb; --c2:#0abde3; --rot:-10deg; --delay:0.3s;"></div>
+                            <div class="gacha-ball" style="--c1:#feca57; --c2:#ff9f43; --rot:35deg; --delay:0.5s;"></div>
+                            <div class="gacha-ball" style="--c1:#1dd1a1; --c2:#10ac84; --rot:-25deg; --delay:0.2s;"></div>
+                            <div class="gacha-ball" style="--c1:#ff6b6b; --c2:#ee5253; --rot:10deg; --delay:0.4s;"></div>
+                            <div class="gacha-ball" style="--c1:#c8d6e5; --c2:#8395a7; --rot:-15deg; --delay:0.6s;"></div>
+                            
+                            <div class="gacha-ball" style="--c1:#54a0ff; --c2:#2e86de; --rot:40deg; --delay:0.15s;"></div>
+                            <div class="gacha-ball" style="--c1:#ff9ff3; --c2:#f368e0; --rot:-5deg; --delay:0.35s;"></div>
+                            <div class="gacha-ball" style="--c1:#feca57; --c2:#ff9f43; --rot:20deg; --delay:0.55s;"></div>
+                            <div class="gacha-ball" style="--c1:#1dd1a1; --c2:#10ac84; --rot:-35deg; --delay:0.25s;"></div>
+                            <div class="gacha-ball" style="--c1:#ff6b6b; --c2:#ee5253; --rot:5deg; --delay:0.45s;"></div>
+                            
+                            <div class="gacha-ball" style="--c1:#48dbfb; --c2:#0abde3; --rot:-20deg; --delay:0.12s;"></div>
+                            <div class="gacha-ball" style="--c1:#c8d6e5; --c2:#8395a7; --rot:45deg; --delay:0.32s;"></div>
+                            <div class="gacha-ball" style="--c1:#ff9ff3; --c2:#f368e0; --rot:15deg; --delay:0.52s;"></div>
+                            <div class="gacha-ball" style="--c1:#54a0ff; --c2:#2e86de; --rot:-10deg; --delay:0.22s;"></div>
+                            
+                            <div class="gacha-ball" style="--c1:#feca57; --c2:#ff9f43; --rot:-30deg; --delay:0.18s;"></div>
+                            <div class="gacha-ball" style="--c1:#1dd1a1; --c2:#10ac84; --rot:25deg; --delay:0.38s;"></div>
+                            <div class="gacha-ball" style="--c1:#ff6b6b; --c2:#ee5253; --rot:-15deg; --delay:0.58s;"></div>
+                        </div>
+                    </div>
+
+                    <div class="gacha-base-mid">
+                        <div class="coin-btn" id="coinBtn"></div>
+                    </div>
+
+                    <div class="gacha-base-bottom">
+                        <div class="exit-hole">
+                            <div class="exit-flap" id="exitFlap"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="to-cake-btn" id="toCakeBtn">🎂 前往第四幕：蛋糕 →</div>
+            </div>
+        </div>
+
+        <!-- ========== 第四幕: 双层蛋糕与立体数字蜡烛 ========== -->
+        <div id="scene4" class="scene">
+            <div class="scene-cake" id="scene4Container">
+                <!-- 顶部对话框 -->
+                <div class="top-dialog" id="topDialog">琪琪小寿星，许愿吧！</div>
+                
+                <!-- 滑动提示 -->
+                <div class="swipe-hint" id="swipeHint">
+                    <div class="arrow">↑</div>
+                    <div>向上滑动</div>
+                </div>
+
+                <div class="cake-wrapper">
+                    <div class="cake" id="cakeClickArea">
+                        <!-- 蜡烛区域 -->
+                        <div class="candles-area">
+                            <!-- 数字 1 -->
+                            <div class="candle-number-wrapper">
+                                <div class="flame" id="flame1" style="animation-delay: 0.1s;"></div>
+                                <div class="candle-wick" style="bottom: 85px;"></div>
+                                <div class="golden-candle-text">1</div>
+                                <div class="candle-base"></div>
+                            </div>
+                            
+                            <!-- 数字 8 -->
+                            <div class="candle-number-wrapper">
+                                <div class="flame" id="flame2" style="animation-delay: 0.25s;"></div>
+                                <div class="candle-wick" style="bottom: 85px;"></div>
+                                <div class="golden-candle-text">8</div>
+                                <div class="candle-base"></div>
+                            </div>
+                        </div>
+
+                        <!-- 蛋糕主体层 -->
+                        <div class="cake-layer-top">
+                            <div class="cake-decoration deco-3"></div>
+                            <div class="cake-decoration deco-4"></div>
+                        </div>
+                        <div class="cake-layer-bottom">
+                            <div class="cake-decoration deco-1"></div>
+                            <div class="cake-decoration deco-2"></div>
+                            <div class="cake-decoration deco-5"></div>
+                            <div class="cake-decoration deco-6"></div>
+                        </div>
+                        
+                        <div class="cake-plate"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== 第五幕: QQ聊天框 ========== -->
+        <div id="scene5" class="scene">
+            <div class="scene-chat">
+                <div class="qq-window" id="qqWindow">
+                    <!-- 标题栏 -->
+                    <div class="qq-titlebar">
+                        <div class="qq-titlebar-left">
+                            <div class="qq-icon">💬</div>
+                            <span>YXTBYLL</span> <!-- 群名已修改 -->
+                        </div>
+                        <div class="qq-titlebar-right">
+                            <div class="qq-win-btn">—</div>
+                            <div class="qq-win-btn">□</div>
+                            <!-- 变为可交互的红色叉号 -->
+                            <div class="qq-win-btn close-btn" id="closeChatBtn">×</div>
+                        </div>
+                    </div>
+                    <!-- 工具栏 -->
+                    <div class="qq-toolbar">
+                        <span>字体</span><span>表情</span><span>魔法表情</span>
+                        <div class="qq-tool-icon"></div>
+                    </div>
+                    <!-- 聊天记录区 -->
+                    <div class="qq-chat-area" id="qqChatArea">
+                        <!-- 动态消息插入这里 -->
+                    </div>
+                    <!-- 输入区 (点击此处开始刷屏) -->
+                    <div class="qq-input-area" id="qqInputArea">
+                        <div class="qq-input-toolbar">
+                            <div class="qq-input-tool-icon"></div>
+                            <div class="qq-input-tool-icon"></div>
+                            <div class="qq-input-tool-icon"></div>
+                        </div>
+                        <div class="qq-textarea">点击对话框</div>
+                        <div class="qq-send-btn">发送(S)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 彩带容器 -->
+    <div class="confetti-container" id="confettiContainer"></div>
+
+    <!-- 吃蛋糕提示弹窗 -->
+    <div class="eat-cake-popup" id="eatCakePopup">可以吃蛋糕啦！</div>
+
+    <!-- 弹出层（扭蛋和纸条） -->
+    <div class="popup-layer" id="popupLayer">
+        <div class="popup-gacha" id="popupGacha" style="display: none;"></div>
+        <div class="popup-note" id="popupNote" style="display: none;">
+            <p id="noteText"></p>
+            <div class="close-hint">点击纸条关闭</div>
+        </div>
+    </div>
+
+    <!-- ========== 交互脚本 ========== -->
+    <script>
+        (function() {
+            // ---- 第一幕名字轮换 ----
+            const nameElement = document.getElementById('friendName');
+            if (nameElement) {
+                const names = [
+                    '👾 谭 淑 鸣 👾',
+                    '⭐ 应 蕙 鸿 ⭐',
+                    '🌟 卢 曼 真 🌟',
+                    '💾 白 梓 毅 💾',
+                    '🎮 徐 子 恒 🎮',
+                    '🌸 李 可 依 🌸'
+                ];
+                let idx = 0;
+                nameElement.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    idx = (idx + 1) % names.length;
+                    nameElement.textContent = names[idx];
+                    nameElement.style.transition = '0.1s';
+                    nameElement.style.transform = 'scale(1.1)';
+                    setTimeout(() => { nameElement.style.transform = 'scale(1)'; }, 100);
+                });
+            }
+
+            // ---- 屏幕双击彩蛋 ----
+            const screenContent = document.querySelector('#scene1 .screen-content');
+            if (screenContent) {
+                screenContent.addEventListener('dblclick', function() {
+                    const wish = document.createElement('div');
+                    wish.textContent = '🎂 永远18岁 🎂';
+                    wish.style.fontSize = '1.5rem';
+                    wish.style.color = '#ffe484';
+                    wish.style.textShadow = '0 0 8px #ffaa33';
+                    wish.style.marginTop = '6px';
+                    wish.style.animation = 'screenGlow 0.8s infinite alternate';
+                    this.appendChild(wish);
+                    setTimeout(() => { wish.remove(); }, 1500);
+                });
+            }
+
+            // ---- 场景切换逻辑 ----
+            const scene1 = document.getElementById('scene1');
+            const scene2 = document.getElementById('scene2');
+            const scene3 = document.getElementById('scene3');
+            const scene4 = document.getElementById('scene4');
+            const scene5 = document.getElementById('scene5');
+            
+            const continueBtn = document.getElementById('continueBtn');
+            const backBtn = document.getElementById('backBtn');
+            const nextToGacha = document.getElementById('nextToGacha');
+            const toCakeBtn = document.getElementById('toCakeBtn');
+
+            function showScene(sceneToShow) {
+                document.querySelectorAll('.scene').forEach(s => {
+                    s.classList.remove('active');
+                    s.style.opacity = '0';
+                });
+                sceneToShow.classList.add('active');
+                requestAnimationFrame(() => {
+                    sceneToShow.style.opacity = '1';
+                });
+            }
+
+            continueBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                showScene(scene2);
+            });
+
+            backBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                showScene(scene1);
+                if (nameElement) nameElement.textContent = '👾 姚 麦 琪 👾';
+            });
+
+            nextToGacha.addEventListener('click', function(e) {
+                e.preventDefault();
+                showScene(scene3);
+            });
+
+            toCakeBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                showScene(scene4);
+            });
+
+            // ========== 第三幕交互 (扭蛋) ==========
+            const coinBtn = document.getElementById('coinBtn');
+            const exitFlap = document.getElementById('exitFlap');
+            const popupGacha = document.getElementById('popupGacha');
+            const popupNote = document.getElementById('popupNote');
+            const noteText = document.getElementById('noteText');
+            const popupLayer = document.getElementById('popupLayer');
+
+            const messages = [
+                "琪琪！恭喜解锁 18 岁！愿你自由坦荡，热烈尽兴，生日快乐。",
+                "十八而至，新章开启。愿琪琪永远保有热爱，奔赴所有想要的风景，生辰快乐。",
+                "琪琪紫啧，欢迎成年！从此合法干更多事，但不许随便闯祸。18 岁生日快乐！",
+                "很开心陪琪琪走到 18 岁。愿前路光明，万事顺遂，不必完美，但一定要快乐。",
+                "我的琪，十八成年，自有锋芒。生日快乐，大胆去做你想做的一切。",
+                "祝 18 岁的姚麦琪，拥有选择人生的底气，平安自在，慢慢发光，生日快乐。"
+            ];
+
+            const colors = [
+                ['#ff9ff3', '#f368e0'],
+                ['#48dbfb', '#0abde3'],
+                ['#feca57', '#ff9f43'],
+                ['#1dd1a1', '#10ac84'],
+                ['#ff6b6b', '#ee5253'],
+                ['#54a0ff', '#2e86de'],
+                ['#c8d6e5', '#8395a7']
+            ];
+
+            let isAnimating = false;
+
+            coinBtn.addEventListener('click', function() {
+                if (isAnimating) return;
+                isAnimating = true;
+
+                exitFlap.classList.add('open');
+
+                setTimeout(() => {
+                    exitFlap.classList.remove('open'); 
+                    
+                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                    popupGacha.style.setProperty('--c1', randomColor[0]);
+                    popupGacha.style.setProperty('--c2', randomColor[1]);
+                    
+                    popupGacha.style.display = 'block';
+                    popupGacha.classList.remove('opening');
+                    
+                    popupGacha.style.animation = 'none';
+                    popupGacha.offsetHeight; 
+                    popupGacha.style.animation = 'popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards';
+                    
+                    popupGacha.onclick = function(e) {
+                        e.stopPropagation();
+                        openGacha();
+                    };
+                }, 300); 
+            });
+
+            function openGacha() {
+                popupGacha.classList.add('opening');
+
+                setTimeout(() => {
+                    popupGacha.style.display = 'none';
+                    
+                    const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+                    noteText.textContent = randomMsg;
+                    
+                    popupNote.style.display = 'flex';
+                    popupNote.style.animation = 'none';
+                    popupNote.offsetHeight;
+                    popupNote.style.animation = 'noteIn 0.5s 0s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards';
+                    
+                    isAnimating = false; 
+                }, 400);
+            }
+
+            popupNote.addEventListener('click', function(e) {
+                e.stopPropagation();
+                popupNote.style.display = 'none';
+            });
+
+            popupLayer.addEventListener('click', function(e) {
+                if (e.target === popupLayer) {
+                    if (popupNote.style.display !== 'none') {
+                        popupNote.style.display = 'none';
+                    }
+                }
+            });
+
+            // ========== 第四幕交互 (滑动许愿吹蜡烛) ==========
+            const scene4Container = document.getElementById('scene4Container');
+            const topDialog = document.getElementById('topDialog');
+            const swipeHint = document.getElementById('swipeHint');
+            const flame1 = document.getElementById('flame1');
+            const flame2 = document.getElementById('flame2');
+            const confettiContainer = document.getElementById('confettiContainer');
+            const cakeClickArea = document.getElementById('cakeClickArea');
+            const eatCakePopup = document.getElementById('eatCakePopup');
+            
+            let startY = 0;
+            let isDragging = false;
+            let blownOut = false;
+
+            scene4Container.addEventListener('mousedown', startSwipe);
+            scene4Container.addEventListener('touchstart', startSwipe, {passive: true});
+
+            function startSwipe(e) {
+                if (blownOut) return;
+                startY = e.touches ? e.touches[0].clientY : e.clientY;
+                isDragging = true;
+            }
+
+            window.addEventListener('mousemove', moveSwipe);
+            window.addEventListener('touchmove', moveSwipe, {passive: false});
+
+            function moveSwipe(e) {
+                if (!isDragging || blownOut) return;
+                const currentY = e.touches ? e.touches[0].clientY : e.clientY;
+                const deltaY = startY - currentY;
+
+                if (deltaY > 50) {
+                    isDragging = false;
+                    extinguishCandles();
+                }
+            }
+
+            window.addEventListener('mouseup', endSwipe);
+            window.addEventListener('touchend', endSwipe);
+
+            function endSwipe() {
+                isDragging = false;
+            }
+
+            function extinguishCandles() {
+                if (blownOut) return;
+                blownOut = true;
+
+                topDialog.style.transition = 'opacity 0.5s ease';
+                topDialog.style.opacity = '0';
+                swipeHint.style.transition = 'opacity 0.5s ease';
+                swipeHint.style.opacity = '0';
+                setTimeout(() => {
+                    topDialog.style.display = 'none';
+                    swipeHint.style.display = 'none';
+                }, 500);
+
+                flame1.classList.add('extinguished');
+                flame2.classList.add('extinguished');
+
+                createConfetti();
+
+                setTimeout(() => {
+                    eatCakePopup.style.display = 'block';
+                }, 1800);
+            }
+
+            function createConfetti() {
+                const colors = ['#ff4d4d', '#ff9ff3', '#48dbfb', '#feca57', '#1dd1a1', '#54a0ff', '#ff6b6b', '#c8d6e5'];
+                const numPieces = 150;
+
+                for (let i = 0; i < numPieces; i++) {
+                    const piece = document.createElement('div');
+                    piece.classList.add('confetti-piece');
+                    if (Math.random() > 0.5) {
+                        piece.classList.add('circle'); 
+                    }
+                    
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    piece.style.setProperty('--color', color);
+
+                    const angle = Math.random() * Math.PI * 2;
+                    const distance = 150 + Math.random() * 650; 
+                    const x = Math.cos(angle) * distance;
+                    const y = Math.sin(angle) * distance;
+                    const rotation = Math.random() * 360;
+
+                    piece.style.setProperty('--x', `${x}px`);
+                    piece.style.setProperty('--y', `${y}px`);
+                    piece.style.setProperty('--r', `${rotation}deg`);
+
+                    piece.style.animationDelay = `${Math.random() * 0.2}s`;
+
+                    confettiContainer.appendChild(piece);
+
+                    setTimeout(() => {
+                        piece.remove();
+                    }, 3500);
+                }
+            }
+
+            // 点击吃蛋糕弹窗或蛋糕本身跳转第五幕
+            eatCakePopup.addEventListener('click', function(e) {
+                e.stopPropagation();
+                eatCakePopup.style.display = 'none';
+                showScene(scene5);
+            });
+
+            cakeClickArea.addEventListener('click', function(e) {
+                if (blownOut) {
+                    eatCakePopup.style.display = 'none';
+                    showScene(scene5);
+                }
+            });
+
+            // ========== 第五幕交互 (QQ群聊刷屏) ==========
+            const qqInputArea = document.getElementById('qqInputArea');
+            const qqChatArea = document.getElementById('qqChatArea');
+            const closeChatBtn = document.getElementById('closeChatBtn');
+            
+            let isFlooding = false;
+            let floodTimeout = null;
+
+            // 朋友列表及其姓氏首字母
+            const friends = [
+                { name: '谭淑鸣', initial: '谭' },
+                { name: '应蕙鸿', initial: '应' },
+                { name: '卢曼真', initial: '卢' },
+                { name: '白梓毅', initial: '白' },
+                { name: '徐子恒', initial: '徐' },
+                { name: '李可依', initial: '李' }
+            ];
+            let friendIndex = 0;
+
+            // 点击输入框区域开始刷屏
+            qqInputArea.addEventListener('click', function(e) {
+                e.stopPropagation(); 
+                if (isFlooding) return;
+                isFlooding = true;
+
+                let delay = 800; 
+                const minDelay = 20; 
+
+                function sendMessage() {
+                    const currentFriend = friends[friendIndex];
+                    friendIndex = (friendIndex + 1) % friends.length; 
+
+                    const msgDiv = document.createElement('div');
+                    msgDiv.className = 'qq-msg';
+                    
+                    msgDiv.innerHTML = `
+                        <div class="qq-avatar">${currentFriend.initial}</div>
+                        <div class="qq-bubble-container">
+                            <div class="qq-sender-name">${currentFriend.name}</div>
+                            <div class="qq-bubble">琪琪！18岁生日快乐！</div>
+                        </div>
+                    `;
+                    
+                    qqChatArea.appendChild(msgDiv);
+                    qqChatArea.scrollTop = qqChatArea.scrollHeight;
+
+                    delay = Math.max(minDelay, delay * 0.85); 
+                    floodTimeout = setTimeout(sendMessage, delay);
+                }
+
+                sendMessage();
+            });
+
+            // 点击右上角红色叉号：彻底重置所有状态并回到第一幕
+            closeChatBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                // 1. 停止刷屏
+                isFlooding = false;
+                if (floodTimeout) {
+                    clearTimeout(floodTimeout);
+                    floodTimeout = null;
+                }
+                qqChatArea.innerHTML = '';
+                friendIndex = 0;
+
+                // 2. 彻底重置第四幕的状态
+                blownOut = false;
+                
+                // 恢复弹窗和提示
+                topDialog.style.display = 'block';
+                topDialog.style.opacity = '1';
+                swipeHint.style.display = 'flex';
+                swipeHint.style.opacity = '1';
+                
+                // 恢复火苗
+                flame1.classList.remove('extinguished');
+                flame2.classList.remove('extinguished');
+                
+                // 隐藏吃蛋糕弹窗
+                eatCakePopup.style.display = 'none';
+                
+                // 清理残余的彩带 DOM (虽然动画结束后大部分会自动清理，但以防万一)
+                confettiContainer.innerHTML = '';
+
+                // 3. 回到第一幕
+                showScene(scene1);
+                if (nameElement) nameElement.textContent = '👾 姚 麦 琪 👾';
+            });
+
+            showScene(scene1);
+        })();
+    </script>
+</body>
+</html>
